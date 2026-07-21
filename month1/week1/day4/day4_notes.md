@@ -1,10 +1,10 @@
 # Day 4
 
-##Objective Function
+## Objective Function
 
 It is a mathematical function that tells how good or bad a model is.
 
-##Optimization
+## Optimization
 
 It is the tuning of parameter's of a model to reduce a certain cost function.
 
