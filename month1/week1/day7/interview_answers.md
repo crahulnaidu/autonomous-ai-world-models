@@ -1,0 +1,23 @@
+1.For convex functions the gradient is always in the same direction as that of the starting point,which means for every iteration the loss function decreases.For gradient descent to converge the function much be k lipchitz which means |f(y)-f(x)|<=K(x-y).Then according to the descent lemma gradient descent will eventually converge after some number of iterations.
+
+2.Momentum carries the past gradients with it though they have lesser weight compared to recent gradients,because of which near the minimum the gradient becomes larger than necessary leadint to overshooting the minimum.It is beneficial when the cost function has multiple local minimum and it is hard to reach the global minimum. In this case momentum can overshoot local minimum and get closer to global minimum compared to gradient descent.
+
+3.Feature scaling decide's the shape of the cost function and hence path of gradient descent.For uneven feature's the cost function would be elongated in one direction leading to the gradient treading slowly and oscillating in that direction leading to a really slow convergence rate.For decision tree's they care about the value's of the features.Even if the features are vastly different in range and scale ,decision tree's only care about whether or not for a particular input the feature value's satisfy a certain criteria or not.
+
+4.A bell state is an entangled state of 2 qubits such that the measurement of one is dependent on the other.For ex-consider the bell state phi+=1/root(2)(|00>+|11>).
+
+assuming it can be decomposed into 2 independent quantum state vectors ,it can be written that 
+
+phi+=(a|0>+b|1>)*(c|0>+d|1>)
+
+now opening the bracket and multiplying terms on the RHS, we get
+ac|00>+ad|01>+bc|10>+bd|11>.
+
+the terms 01 and 10 must be zero to match LHS,but for that to happen ad=0,and bc=0 i.e a=0 or d=0 and b=0 or c=0.But this condition leads to a quantum state different from the original.Hence the bell state phi+ is a non-product state and cannot be written as the product of 2 quantum states.The argument similarly follows for other bell states.
+
+5.Yes one optimizer can be better than the other. One optimizer can generalize well than the other as it tweaks the parameters such that it understands the input pattern's well and can predict well for other unseen data.The other factor is convergence speed,for ex-for a non convex cost function gradient descent and momentum have the same training loss then momentum has most probably taken much lesser epochs compared to GD as it average's out oscillations and speeds up convergence on plateaus. The 2 optimizers can be different when it comes to stability as one may continuously oscillate till the minimum, while the other may reach it much more smoothly,for ex-mini-batch vs stochastic gradient descent. One optimizer can be computationally efficient than the other depending upon the number of instances taken into account while calculating the gradient ex-batch GD vs stochastic GD.Since batch GD take the whole training instances to calculate the gradient, for a really large dataset,it becomes computationally heavy,while stochastic GD is really fast as it only takes a single instance.
+
+
+Research Lab Challenge.
+
+Firstly the optimizer should learn the latent representations from data that will be useful in figuring out the physical dynamics.It should filter out the noise like background objects,lightening information.etc which are not helpful for the task.The optimizer should be able to retain useful information from the past that would help it now.For ex-suppose a robot is trying to figure out how fast a ball rolls down an incline.It would be useful for the robot to remember that heavier balls roll faster ,so that it can use it to predict the speed of a different ball.It should also be able to forget information not useful for its task, like in the previous example,the color of the ball or the weather.There are many features that would be useful for the robot in the example like the shape of the ball,its size,hardness, the roughness of the incline.etc ,but learning all of them and their effect towards the speed might be overwhelming for the robot,so it should also observe which feature is having the most effect towards the outcome and prefer them over the others.Here momentum alone would not be enough as even with filtering the number of learnable features would be really large leading to a extremely slow or oscillating convergence.The optimizer needs to adapt to the terrain by changing the learning rate and momentum/friction value.In an uneven terrain a large enough momentum might help the optimizer escape it.Adaptive parameters also would help the optimizer retain important information while forgetting useless ones.
